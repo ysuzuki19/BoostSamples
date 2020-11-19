@@ -1,13 +1,11 @@
 #include <iostream>
-#include <string>
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/operations.hpp>
 namespace fs = boost::filesystem;
-using namespace std;
 
 boost::filesystem::path find_git_root (boost::filesystem::path directory) {
-  for (auto& filename : fs::directory_iterator (directory)) {
+  for (auto& filename : boost::filesystem::directory_iterator (directory)) {
     if (filename.path ().leaf ().string () == ".git") {
       return directory;
     }
@@ -21,7 +19,7 @@ boost::filesystem::path find_git_root (boost::filesystem::path directory) {
 }
 
 int main (int argc, char** argv) {
-  fs::path git_root = find_git_root (fs::current_path ());
+  boost::filesystem::path git_root = find_git_root (boost::filesystem::current_path ());
   std::cout << "GIT ROOT DIR : " << git_root << std::endl;
   return 0;
 }
