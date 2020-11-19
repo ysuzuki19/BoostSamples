@@ -19,7 +19,7 @@ boost::filesystem::path find_git_root (boost::filesystem::path directory) {
 }
 
 int main (int argc, char** argv) {
-  boost::filesystem::path git_root = find_git_root (boost::filesystem::current_path ());
+  fs::path git_root = find_git_root (fs::current_path ());
   std::cout << "GIT ROOT DIR : " << git_root << std::endl;
   return 0;
 }
